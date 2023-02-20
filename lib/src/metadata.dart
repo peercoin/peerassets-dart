@@ -21,7 +21,7 @@ Deck newDeck(
   deck.metadata = utf8.encode(metadata);
 
   if (deck.toString().length > maxDataSize) {
-    throw ("OP_RETURN size is exceeding the maximum size allowed (256 bytes).");
+    throw ("OP_RETURN size is exceeding the maximum size allowed ($maxDataSize bytes).");
   }
 
   deck.check();
@@ -43,7 +43,7 @@ Card newCard(List<Int64> amount, String metadata) {
 
   if (card.toString().length > maxDataSize) {
     print(card.toString());
-    throw ("OP_RETURN size is exceeding the maximum size allowed (256 bytes).");
+    throw ("OP_RETURN size is exceeding the maximum size allowed ($maxDataSize bytes).");
   }
 
   return card;
