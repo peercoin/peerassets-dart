@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:pa/pa.dart';
 import 'package:pa/generated/paspec.pb.dart';
 import 'package:test/test.dart';
@@ -58,12 +60,104 @@ void main() {
   });
   */
 
+  group("Read Deck from buffer", () {
+    final deckBuffer = [
+      8,
+      1,
+      18,
+      9,
+      84,
+      101,
+      115,
+      116,
+      32,
+      68,
+      101,
+      99,
+      107,
+      24,
+      8,
+      32,
+      4,
+      42,
+      3,
+      72,
+      105,
+      33
+    ];
+
+    test('test Deck deserialization', () {
+      expect(readDeck(deckBuffer).writeToJson(),
+          '{"1":1,"2":"Test Deck","3":8,"4":4,"5":"SGkh"}');
+    });
+  });
+
+  /// card stuff bellow
   group('Test Card serialization', () {
     final c = newCard(
         [Int64(1), Int64(10)], "Sending you folk the tokens as promissed.");
 
     test('Test serialize Card to Json', () {
       expect(c.writeToJson(),
+          '{"1":1,"2":["1","10"],"3":"U2VuZGluZyB5b3UgZm9sayB0aGUgdG9rZW5zIGFzIHByb21pc3NlZC4="}');
+    });
+  });
+
+  group('Test Card deserialization', () {
+    final cardBuffer = [
+      8,
+      1,
+      18,
+      2,
+      1,
+      10,
+      26,
+      41,
+      83,
+      101,
+      110,
+      100,
+      105,
+      110,
+      103,
+      32,
+      121,
+      111,
+      117,
+      32,
+      102,
+      111,
+      108,
+      107,
+      32,
+      116,
+      104,
+      101,
+      32,
+      116,
+      111,
+      107,
+      101,
+      110,
+      115,
+      32,
+      97,
+      115,
+      32,
+      112,
+      114,
+      111,
+      109,
+      105,
+      115,
+      115,
+      101,
+      100,
+      46
+    ];
+
+    test('test Deck deserialization', () {
+      expect(readCard(cardBuffer).writeToJson(),
           '{"1":1,"2":["1","10"],"3":"U2VuZGluZyB5b3UgZm9sayB0aGUgdG9rZW5zIGFzIHByb21pc3NlZC4="}');
     });
   });
