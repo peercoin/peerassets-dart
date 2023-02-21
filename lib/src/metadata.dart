@@ -29,6 +29,14 @@ Deck newDeck(
   return deck;
 }
 
+Deck readDeck(List<int> rawDeck) {
+  Deck deck = Deck.fromBuffer(rawDeck);
+
+  deck.check();
+
+  return deck;
+}
+
 Card newCard(List<Int64> amount, String metadata) {
   // you have to pass int64 to this class
 
@@ -45,6 +53,14 @@ Card newCard(List<Int64> amount, String metadata) {
     print(card.toString());
     throw ("OP_RETURN size is exceeding the maximum size allowed ($maxDataSize bytes).");
   }
+
+  return card;
+}
+
+Card readCard(List<int> rawCard) {
+  Card card = Card.fromBuffer(rawCard);
+
+  card.check();
 
   return card;
 }
