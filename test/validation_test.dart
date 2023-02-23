@@ -48,6 +48,7 @@ void main() {
   ], [
     Vout(2, 'mpDMLa4N6hskcuJpTkcLTd4HB7Q2yF22bG', invalidNulldata)
   ], '7d77e4fb7d18ad334b522500f629e7634cebb1b028763ec27c763c3eb874b6dc');
+
   group('test Deck validation', () {
     test('test checkDeckSpwan - true', () {
       expect(checkDeckSpawn(properDeckSpawn), true);
