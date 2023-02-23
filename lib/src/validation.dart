@@ -8,13 +8,11 @@ bool checkDeckSpawn(Transaction txn) {
 
   // first check vout[0] for nulldata, that's where Deck spawn could be
   if (vout0.nulldata.isNotEmpty) {
-    final deck = readCard(vout0.nulldata);
-
     try {
+      final deck = readCard(vout0.nulldata);
       deck.check();
     } catch (e) {
       // malformed deck
-      print('Malformed deck: $e');
       return false;
     }
   }
