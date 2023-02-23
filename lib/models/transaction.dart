@@ -8,9 +8,9 @@ class Vin {
 class Vout {
   int n;
   String address;
-  final List<int> nulldata = [];
+  List<int> nulldata = [];
 
-  Vout(this.n, this.address);
+  Vout(this.n, this.address, this.nulldata);
 }
 
 class Transaction {
